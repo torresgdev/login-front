@@ -1,5 +1,5 @@
 import React from "react";
-import type { HtmlHTMLAttributes, InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes } from "react";
 
 // INTERFACE DE PROPRIEDADES (PROPS)
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> { 
