@@ -4,7 +4,7 @@ import type { InputHTMLAttributes } from "react";
 // INTERFACE DE PROPRIEDADES (PROPS)
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> { 
     label?: string;
-    error?: string;
+    error?: string | null;
 }
 
 // COMPONENTE INPUT
