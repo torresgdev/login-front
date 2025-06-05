@@ -32,7 +32,7 @@ const  App: React.FC = () => {
 
         <Button 
           onClick={() => alert('Botao primario clicado!')}
-          className='mt-4'
+          className='mt-4 p-3 bg-blue-400 rounded-2xl m-3'
           isLoading={loadingButton}
           onClickCapture={() => {
             setLoadingButto(true);
@@ -44,7 +44,7 @@ const  App: React.FC = () => {
           <Button
             variant="secondary"
             onClick={() => alert('Botão scundário clicado!')}
-            className='mt-4'>
+            className='mt-4 p-3 bg-green-400 rounded-2xl'>
               Botão Secundário
             </Button>
       </div>
