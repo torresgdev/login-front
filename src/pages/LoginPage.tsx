@@ -15,6 +15,8 @@ const LoginPage: React.FC = () => {
   const [submissionMessage, setSubmissionMessage] = useState<string | null>(null);
   const [isSuccessMessage, setIsSuccessMessage] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+
   const {
     values,
     errors,
@@ -22,9 +24,9 @@ const LoginPage: React.FC = () => {
     handleChange,
     handleSubmit,
   } = useForm<LoginFormValues>(
-    { email: '', password: '' }, // Valores iniciais
+    { email: '', password: '' }, 
     {
-      // Regras de validação para cada campo.
+  
       email: validateEmail,
       password: validatePassword,
     }
@@ -41,6 +43,7 @@ const LoginPage: React.FC = () => {
         setSubmissionMessage('Login realizado com sucesso! Redirecionando...');
         setIsSuccessMessage(true);
         console.log('Login bem-sucedido:', data);
+        setTimeout(() => navigate('/dashboard'), 1000);
       } else {
         throw new Error('E-mail ou senha inválidos.');
       }
@@ -63,7 +66,7 @@ const LoginPage: React.FC = () => {
                         </div>
                     )}
 
-                    <form action="">
+                    <form onSubmit={handleSubmit(handleLoginSubmit)}  noValidate>
                         <Input
                             label="E-mail"
                             type="email"
@@ -86,7 +89,7 @@ const LoginPage: React.FC = () => {
                             error={errors.password}
                             disabled={loading} />
 
-                        <Button type="submit" isLoading={loading} className="mt-4">
+                        <Button type="submit" isLoading={loading} className="mt-4 text-bold bg-blue-400">
                             Entrar
                         </Button>
                     </form>
