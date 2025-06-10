@@ -4,6 +4,7 @@ import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import useForm from "../hooks/useForm";
 import { validateEmail, validatePassword, validateConfirmPassword } from "../utils/validation";
+import { registerUser } from "../api/auth";
 
 interface RegisterFormValues {
     email: string;
@@ -38,18 +39,24 @@ const RegisterPage: React.FC = () => {
     setSubmissionMessage(null)
 
      try {
-    console.log('Dados de registro sendo enviados: ', data);
-    await new Promise(resolve => setTimeout(resolve,2000))
+        await registerUser(data.email, data.password)
 
-    if(data.email === "error@teste.com") throw new Error("error de servidor simulado")
+        setSubmissionMessage('Cadastro realizado com sucesso! Você pode fazer login agora.')
+        setIsSuccessMessage(true)
+        console.log('Registro Bem-Sucedido: ', data.email);
 
-    setSubmissionMessage("Cadastro realizado com sucesso ! Voce pode fazer login agora")
-    setIsSuccessMessage(true);
-    console.log('Registro bem sucedido: ', data)
   } catch (error) {
-        setSubmissionMessage("Erro ao registrar. Por Favor, tente novamente.");
+        let errorMessage = "Error ao registrar, Por favor, tente nomanve."
+        if(error instanceof Error) {
+            errorMessage = error.message;
+        } else if (typeof error === 'string') {
+            errorMessage = error
+        } else {
+            console.error("Tipo de error inesperado: ", error)
+        }
+        setSubmissionMessage(errorMessage);
         setIsSuccessMessage(false)
-        console.error("erro de registro: ", error)
+        console.error("erro de registro no Backend: ", error)
     }
   };
 

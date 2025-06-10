@@ -4,6 +4,7 @@ import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import useForm from "../hooks/useForm";
 import { validateEmail, validatePassword } from "../utils/validation";
+import { loginUser } from "../api/auth";
 
 interface LoginFormValues {
     email: string;
@@ -36,21 +37,19 @@ const LoginPage: React.FC = () => {
     setSubmissionMessage(null);
 
     try {
-      console.log('Dados de login sendo enviados:', data);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await loginUser(data.email, data.password);
+      localStorage.setItem('access_token', response.access_token);
+      console.log('Token de acesso: ', response.access_token);
 
-      if (data.email === 'teste@teste.com' && data.password === '123456') {
-        setSubmissionMessage('Login realizado com sucesso! Redirecionando...');
-        setIsSuccessMessage(true);
-        console.log('Login bem-sucedido:', data);
-        setTimeout(() => navigate('/dashboard'), 1000);
-      } else {
-        throw new Error('E-mail ou senha inválidos.');
-      }
+      setSubmissionMessage("Login realizado com Sucesso ! Redirencionando...");
+      setIsSuccessMessage(true);
+      console.log('Login bem-sucedido para: ', data.email);
+
+      setTimeout(() => navigate('/dashboard'), 1000)
     } catch (error: any) {
       setSubmissionMessage(error.message || 'Erro ao fazer login. Por favor, tente novamente.');
       setIsSuccessMessage(false);
-      console.error('Erro de login:', error);
+      console.error('Erro de login no Backend:', error);
     }
   };
 
