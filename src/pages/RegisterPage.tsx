@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import useForm from "../hooks/useForm";
@@ -17,6 +17,8 @@ interface RegisterFormValues {
 const RegisterPage: React.FC = () => {
     const [submissionMessage, setSubmissionMessage] = useState<string | null>(null);
     const [isSuccessMessage, setIsSuccessMessage] = useState<boolean>(false);
+
+    const navigate = useNavigate();
 
      const {
     values,        
@@ -44,6 +46,8 @@ const RegisterPage: React.FC = () => {
         setSubmissionMessage('Cadastro realizado com sucesso! Você pode fazer login agora.')
         setIsSuccessMessage(true)
         console.log('Registro Bem-Sucedido: ', data.email);
+
+        setTimeout(() => navigate('/login'), 1000)
 
   } catch (error) {
         let errorMessage = "Error ao registrar, Por favor, tente nomanve."
@@ -105,7 +109,7 @@ const RegisterPage: React.FC = () => {
                     error = {errors.confirmPassword}
                     disabled={loading} />
 
-                <Button type="submit" isLoading={loading} className="mt-4">
+                <Button type="submit" isLoading={loading} className="mt-4 p-3 w-50 rounded-2xl bg-gradient-to-r from-blue-500 to-pink-500 hover:bg-gradient-to-l hover:from-pink-700 to-purple-500 transition-colors duration-100">
                         Registrar
                 </Button>
             </form>
