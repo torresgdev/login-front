@@ -9,11 +9,17 @@ Mensagens de Feedback: Exibição de mensagens de sucesso ou erro após a tentat
 Navegação entre Páginas: Uso de React Router DOM para navegação fluida entre Login, Registro e uma Dashboard simulada.
 Estado de Carregamento: Feedback visual durante o processo de submissão do formulário.
 Responsividade: Design adaptável a diferentes tamanhos de tela (desktop, tablet, mobile) com Tailwind CSS.
+
+---
+
 🚀 Tecnologias Utilizadas
 React 18+ (com Vite): Biblioteca JavaScript para construção de interfaces de usuário reativas e componentizadas, com o Vite para um ambiente de desenvolvimento rápido.
 TypeScript: Superset do JavaScript que adiciona tipagem estática, melhorando a segurança do código, a detecção de erros e a manutenibilidade.
 Tailwind CSS: Framework CSS "utility-first" que permite construir designs complexos e responsivos diretamente no HTML, promovendo um desenvolvimento ágil e consistente.
 React Router DOM: Biblioteca padrão para roteamento declarativo em aplicações React de página única (SPA), gerenciando a navegação e o estado da URL.
+
+---
+
 ⚙️ Princípios de Clean Code Aplicados
 Este projeto serve como um exemplo prático de aplicação de diversos princípios de Clean Code:
 
@@ -28,6 +34,8 @@ Funções Utilitárias: As funções de validação em src/utils/validation.ts s
 Legibilidade: Nomes de variáveis, funções e componentes são claros e autoexplicativos, facilitando o entendimento do código.
 Modularidade: O projeto é dividido em pastas lógicas (components, hooks, pages, routes, utils), o que melhora a organização e a escalabilidade.
 Comentários: O código é amplamente comentado, explicando não apenas o quê cada bloco de código faz, mas principalmente o porquê de certas decisões de design e arquitetura, e como a lógica complexa funciona.
+
+---
 
 ⚙️ Como Rodar o Projeto
 Siga os passos abaixo para configurar e executar o projeto em sua máquina local.
@@ -66,6 +74,8 @@ pnpm dev
 ```
 
 ## O aplicativo estará acessível em http://localhost:5173/ (ou a porta que o Vite indicar) no seu navegador.
+
+---
 
 🧪 Como Testar as Funcionalidades
 Navegação:
